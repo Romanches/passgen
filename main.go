@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"strings"
+	"time"
 )
 
 var chars = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ" +
@@ -13,6 +14,7 @@ var chars = []rune("ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ" +
 
 // GeneratePasswords generates a password with the given length
 func GeneratePassword(ln int) string {
+	rand.Seed(time.Now().UnixNano())
 	var b strings.Builder
 	for i := 0; i < ln; i++ {
 		b.WriteRune(chars[rand.Intn(len(chars))])
